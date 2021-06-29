@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Lesson 1 - values, arrays and matrices | PyPenguin</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Lesson 1 - values, arrays and matrices" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An introduction to programming in Python" />
+<meta property="og:description" content="An introduction to programming in Python" />
+<link rel="canonical" href="https://fvanden.github.io/PyPenguin/jupyter/2021/06/29/Lesson1.html" />
+<meta property="og:url" content="https://fvanden.github.io/PyPenguin/jupyter/2021/06/29/Lesson1.html" />
+<meta property="og:site_name" content="PyPenguin" />
+<meta property="og:image" content="https://fvanden.github.io/PyPenguin/images/chart-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-29T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An introduction to programming in Python","url":"https://fvanden.github.io/PyPenguin/jupyter/2021/06/29/Lesson1.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://fvanden.github.io/PyPenguin/jupyter/2021/06/29/Lesson1.html"},"headline":"Lesson 1 - values, arrays and matrices","dateModified":"2021-06-29T00:00:00-05:00","datePublished":"2021-06-29T00:00:00-05:00","image":"https://fvanden.github.io/PyPenguin/images/chart-preview.png","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/PyPenguin/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://fvanden.github.io/PyPenguin/feed.xml" title="PyPenguin" /><link rel="shortcut icon" type="image/x-icon" href="/PyPenguin/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/PyPenguin/">PyPenguin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/PyPenguin/about/">About PyPenguin</a><a class="page-link" href="/PyPenguin/search/">Search</a><a class="page-link" href="/PyPenguin/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Lesson 1 - values, arrays and matrices</h1><p class="page-description">An introduction to programming in Python</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-06-29T00:00:00-05:00" itemprop="datePublished">
+        Jun 29, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/PyPenguin/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/fvanden/PyPenguin/tree/master/_notebooks/2021-06-29-Lesson1.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/PyPenguin/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/fvanden/PyPenguin/master?filepath=_notebooks%2F2021-06-29-Lesson1.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/PyPenguin/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/fvanden/PyPenguin/blob/master/_notebooks/2021-06-29-Lesson1.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/PyPenguin/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#About">About </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#values,-arrays-and-matrices">values, arrays and matrices </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#value-explanation">value explanation </a></li>
+<li class="toc-entry toc-h3"><a href="#value-example">value example </a></li>
+<li class="toc-entry toc-h3"><a href="#value-exercise-1">value exercise 1 </a></li>
+<li class="toc-entry toc-h3"><a href="#value-exercise-2">value exercise 2 </a></li>
+<li class="toc-entry toc-h3"><a href="#array-explanation">array explanation </a></li>
+<li class="toc-entry toc-h3"><a href="#array-example">array example </a></li>
+<li class="toc-entry toc-h3"><a href="#array-exercise">array exercise </a></li>
+<li class="toc-entry toc-h3"><a href="#matrix-explanation">matrix explanation </a></li>
+<li class="toc-entry toc-h3"><a href="#matrix-example">matrix example </a></li>
+<li class="toc-entry toc-h3"><a href="#matrix-exercise">matrix exercise </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-06-29-Lesson1.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="About">
+<a class="anchor" href="#About" aria-hidden="true"><span class="octicon octicon-link"></span></a>About<a class="anchor-link" href="#About"> </a>
+</h1>
+<p>In this notebook, you will learn the difference between values, arrays and matrices used in Python.</p>
+<p>In order to run the scripts in this notebook, click on the <code>launch in binder</code> or <code>open in Colab</code> buttons - wait for a while, this may take some time. Once the notebook is loaded, you can execute scripts in each cell by hitting <code>SHIFT + ENTER</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="values,-arrays-and-matrices">
+<a class="anchor" href="#values,-arrays-and-matrices" aria-hidden="true"><span class="octicon octicon-link"></span></a>values, arrays and matrices<a class="anchor-link" href="#values,-arrays-and-matrices"> </a>
+</h2>
+<p>Imagine your colleague is counting penguins on an ice floe, the number of penguins she counts on that floe will be a <a href="#valueexample">value</a></p>
+<p>If your colleague is counting penguins on several different ice floes, she will end up with a <b> list of values </b> or an <a href="#arrayexample">array</a></p>
+<p>Finally, if your colleague is counting penguins using still satellite images from space, she might decide to divide the image into boxes of equal sizes and count the number of penguins in each box. She will end up with a <b> list of lists </b> in either the horizontal or vertical direction. Such a <b> list of lists </b> is also called a <a href="#matrixexample">matrix</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="value-explanation">
+<a class="anchor" href="#value-explanation" aria-hidden="true"><span class="octicon octicon-link"></span></a>value explanation<a class="anchor-link" href="#value-explanation"> </a>
+</h3>
+<p><a id="valueexample" value=""></a></p>
+<p>In Python, there are different <b> Data Types </b>: such as numbers (integers, floats and complex), strings and boolean values.</p>
+<blockquote>
+<p>if your colleague is counting the number of penguins on an ice floe, she will end up with a number like 1, 4 or 10. This is called an <b> integer </b>, because it is a whole number</p>
+<p>if your colleague decides to divide the ice floe into boxes and count the number of penguins in each box, she might find a penguin sitting on the edge between two boxes. She can then decide to say that there are 0.5 penguins in that box. Any number with a fraction (for example 2.3, 1.6778 etc,) is called a <b> floating point number </b> or a <b> float </b></p>
+<p>complex numbers are beyond the scope of this tutorial, for more information see <a href="https://www.mathsisfun.com/numbers/complex-numbers.html">this explanation</a>
+if your colleague decides to give each penguin a name, she might note these downs. Values which are sequences of characters are called <b> strings </b> in Python</p>
+<p>Finally, if your colleague is only interested in whether or not there are any penguins sitting on an ice floe, she might only note down True (there are penguins) or False (there are no penguins). This is called a <b> boolean value </b></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="value-example">
+<a class="anchor" href="#value-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>value example<a class="anchor-link" href="#value-example"> </a>
+</h3>
+<p><code>![](my_icons/numbers.png)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="value-exercise-1">
+<a class="anchor" href="#value-exercise-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>value exercise 1<a class="anchor-link" href="#value-exercise-1"> </a>
+</h3>
+<p>Python can let you know what the type is of the value that you're looking at. In the example below, change the value to:</p>
+<ul>
+    <li> a <b> float </b> (i.e. 2.5) </li>
+    <li> a <b> string </b> (i.e. "Pingu") NOTE: you have to put a string in parentheses! </li>
+    <li> a <b> boolean </b> value (i.e. True)</li>
+</ul>
+<p>Click on the box and remember to hit <code>SHIFT + ENTER</code> to execute the code</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>bool</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="value-exercise-2">
+<a class="anchor" href="#value-exercise-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>value exercise 2<a class="anchor-link" href="#value-exercise-2"> </a>
+</h3>
+<p>Depending on whether your <b> Data Type </b> is an integer, float or boolean value, there are certain operations that you can or can not perform. Operations include multiplication <code>*</code>, division <code>/</code>, addition <code>+</code>, subtraction <code>-</code> and exponentiation <code>**</code></p>
+<p>Try some operations on different data types below.</p>
+<p><b> Question 1a </b> what happens when you multiply a string value? (i.e. <code>"Penguin"</code>)?</p>
+<p><b> Question 1b </b> what happens when you divise a string value? (i.e. <code>"Penguin"</code>)?</p>
+<p><b> Question 2a </b> what happens when you multiply or divise a boolean value? (i.e. <code>True</code>)? Note: type True without parenthesis, but with a capital letter</p>
+<p><b> Question 2b </b> what does this tell you about the value of True?</p>
+<p><b> Question 3 (bonus) </b> what is the value of False?</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">"Penguin"</span> <span class="o">*</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'PenguinPenguin'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="array-explanation">
+<a class="anchor" href="#array-explanation" aria-hidden="true"><span class="octicon octicon-link"></span></a>array explanation<a class="anchor-link" href="#array-explanation"> </a>
+</h3>
+<p><a id="arrayexample" array=""></a></p>
+<p>Remember that your colleague might want to note down the number of Penguins at different sites or locations. This would result in a <b> list of values </b>.</p>
+<blockquote>
+<p>If all the values in the list are of the same <b> Data Type </b> (integer, float etc) we call it an <b> array </b>.</p>
+</blockquote>
+<p>The position of a value in a list or array is called an <b> index </b>, indices can help you query lists to find the a value at a specific location. If your colleague for example wanted to know what the number of penguins at location 3 were, she could would need to consult the value of the 3rd index</p>
+<blockquote>
+<p>Note:in Python, the first index is 0. This means that if you want to know the 3rd value in your list, you need to consult index 2. This is different for different programming languages.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="array-example">
+<a class="anchor" href="#array-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>array example<a class="anchor-link" href="#array-example"> </a>
+</h3>
+<p><code>![](my_icons/array.png)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="array-exercise">
+<a class="anchor" href="#array-exercise" aria-hidden="true"><span class="octicon octicon-link"></span></a>array exercise<a class="anchor-link" href="#array-exercise"> </a>
+</h3>
+<p>In the code below, an array is created which is called <code>locations_list</code> (you can click <code>Show code</code> to see it).</p>
+<p>You can see the length of a list (the total number of locations) by typing <code>len(locations_list)</code></p>
+<p><b> Question 4a </b> what is the length of the locations list?</p>
+<p>You can also find the values of the number of penguins found at each location. In the example below, the value for the first location is obtained by typing (<code>locations_list[0]</code>).</p>
+<p><b> Question 4b </b> change the code to extract the number of penguins at the 3rd location, what is the value?</p>
+<p>There is another list called <code>penguin_names</code></p>
+<p>By changing the code in either of the boxes below, try to find:</p>
+<p><b> Question 5b </b> The length of the list with penguin_names</p>
+<p><b> Question 5b </b> All of the values in the list</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">locations_list</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>10</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="matrix-explanation">
+<a class="anchor" href="#matrix-explanation" aria-hidden="true"><span class="octicon octicon-link"></span></a>matrix explanation<a class="anchor-link" href="#matrix-explanation"> </a>
+</h3>
+<p><a id="matrixexample" matrix=""></a></p>
+<p>Finally, if your colleague is interested in counting penguins using satellite images, she might divide the image into boxes of equal sizes and count the number of penguins in each box. A <b> list of lists </b> is called a <b> matrix </b>.</p>
+<blockquote>
+<p>Like with arrays or lists, matrix indices start at 0 in Python. By convention, row indices come first in Python</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="matrix-example">
+<a class="anchor" href="#matrix-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>matrix example<a class="anchor-link" href="#matrix-example"> </a>
+</h3>
+<p><code>![](my_icons/matrix.png)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="matrix-exercise">
+<a class="anchor" href="#matrix-exercise" aria-hidden="true"><span class="octicon octicon-link"></span></a>matrix exercise<a class="anchor-link" href="#matrix-exercise"> </a>
+</h3>
+<p>In the code below, a matrix is created which is called <code>locations_matrix</code> (you can click <code>Show code</code> to see it).</p>
+<p>You can see the matrix by typing the name and hitting <code>SHIFT + ENTER</code> or the shape of the matrix by typing <code>locations_matrix.shape</code></p>
+<p>Finally, you can see the value of the upper left hand corner of the matrix (or first row, first column) by typing <code>locations_matrix[0][0]</code></p>
+<p><b> Question 6 </b> what is the value of the bottom right hand corner of the matrix (last row, last column)?</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_matrix</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 7,  8,  5],
+       [10, 12,  3],
+       [ 9, 18,  8]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_matrix</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(3, 3)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">locations_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="fvanden/PyPenguin"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/PyPenguin/jupyter/2021/06/29/Lesson1.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/PyPenguin/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/PyPenguin/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/PyPenguin/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Using Penguins and everything Polar to introduce programming in Python..</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fvanden" title="fvanden"><svg class="svg-icon grey"><use xlink:href="/PyPenguin/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/DrFEMvdHeuvel" title="DrFEMvdHeuvel"><svg class="svg-icon grey"><use xlink:href="/PyPenguin/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
