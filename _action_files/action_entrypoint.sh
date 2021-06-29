@@ -6,7 +6,7 @@ export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChec
 eval "$(ssh-agent -s)"
 
 ######## Run notebook/word converter ########
-pip install numpy --user
+pip install numpy
 # word converter using pandoc
 /fastpages/word2post.sh
 # notebook converter using nbdev
