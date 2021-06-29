@@ -39,8 +39,8 @@ baseurl: "/PyPenguin" # the subpath of your site, e.g. "/blog".
 # Github and twitter are optional:
 minima:
   social_links:
-    twitter: DrFEMvdHeuvel
-    github: fvanden
+    twitter: "DrFEMvdHeuvel"
+    github: "fvanden"
 
 # Set this to true to get LaTeX math equation support
 use_math: 
